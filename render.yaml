@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: shiftopia-frontend
+    env: node
+    plan: free
+    buildCommand: npm install --legacy-peer-deps && npm run build
+    startCommand: npm run start
+    healthCheckPath: /
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: NEXT_TELEMETRY_DISABLED
+        value: 1
+    disk:
+      name: shiftopia-data
+      mountPath: /opt/render/project/.next
+      sizeGB: 1
