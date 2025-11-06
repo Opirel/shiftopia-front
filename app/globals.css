@@ -1,0 +1,467 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --radius: 0.625rem;
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+}
+
+.dark {
+  /* Enhanced dark mode with better contrast and readability */
+  --background: oklch(0.09 0.01 264); /* Slightly lighter deep background */
+  --foreground: oklch(0.98 0 0); /* Pure white text for maximum contrast */
+  --card: oklch(0.12 0.015 264); /* Lighter card background for better readability */
+  --card-foreground: oklch(0.95 0 0); /* High contrast white text on cards */
+  --popover: oklch(0.11 0.01 264); /* Slightly lighter popover background */
+  --popover-foreground: oklch(0.95 0 0); /* High contrast text on popovers */
+  --primary: oklch(0.7 0.15 264); /* Brighter purple primary for better visibility */
+  --primary-foreground: oklch(0.98 0 0); /* Pure white text on primary */
+  --secondary: oklch(0.18 0.02 264); /* Lighter secondary background */
+  --secondary-foreground: oklch(0.9 0 0); /* High contrast text on secondary */
+  --muted: oklch(0.16 0.015 264); /* Lighter muted elements for better readability */
+  --muted-foreground: oklch(0.8 0 0); /* Higher contrast muted text - CHANGED to lighter */
+  --accent: oklch(0.75 0.18 264); /* Brighter accent color */
+  --accent-foreground: oklch(0.98 0 0); /* Pure white text on accents */
+  --destructive: oklch(0.6 0.22 15); /* Brighter red for better visibility */
+  --destructive-foreground: oklch(0.98 0 0); /* White text on destructive */
+  --border: oklch(0.22 0.02 264); /* Lighter borders for better definition */
+  --input: oklch(0.14 0.02 264); /* Lighter input backgrounds */
+  --ring: oklch(0.7 0.15 264); /* Bright focus rings */
+  --chart-1: oklch(0.7 0.15 264);
+  --chart-2: oklch(0.75 0.12 180);
+  --chart-3: oklch(0.8 0.14 120);
+  --chart-4: oklch(0.65 0.18 300);
+  --chart-5: oklch(0.72 0.16 60);
+  --sidebar: oklch(0.1 0.01 264); /* Slightly lighter sidebar */
+  --sidebar-foreground: oklch(0.9 0 0); /* High contrast sidebar text */
+  --sidebar-primary: oklch(0.7 0.15 264);
+  --sidebar-primary-foreground: oklch(0.98 0 0);
+  --sidebar-accent: oklch(0.16 0.02 264); /* Lighter sidebar accents */
+  --sidebar-accent-foreground: oklch(0.9 0 0);
+  --sidebar-border: oklch(0.22 0.02 264); /* Lighter sidebar borders */
+  --sidebar-ring: oklch(0.7 0.15 264);
+}
+
+@theme inline {
+  /* optional: --font-sans, --font-serif, --font-mono if they are applied in the layout.tsx */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Force all text to be white or light grey in dark mode */
+.dark * {
+  color: oklch(0.95 0 0) !important;
+}
+
+.dark .text-muted-foreground {
+  color: oklch(0.8 0 0) !important;
+}
+
+.dark .text-gray-900,
+.dark .text-gray-800,
+.dark .text-gray-700,
+.dark .text-gray-600,
+.dark .text-gray-500,
+.dark .text-gray-400 {
+  color: oklch(0.85 0 0) !important;
+}
+
+.dark .text-black {
+  color: oklch(0.95 0 0) !important;
+}
+
+.dark h1,
+.dark h2,
+.dark h3,
+.dark h4,
+.dark h5,
+.dark h6 {
+  color: oklch(0.98 0 0) !important;
+}
+
+.dark p,
+.dark span,
+.dark div,
+.dark label {
+  color: oklch(0.9 0 0) !important;
+}
+
+.dark .text-sm {
+  color: oklch(0.85 0 0) !important;
+}
+
+.dark .text-xs {
+  color: oklch(0.8 0 0) !important;
+}
+
+/* Ensure colored text remains visible in dark mode */
+.dark .text-green-600,
+.dark .text-green-700,
+.dark .text-green-800 {
+  color: oklch(0.7 0.15 140) !important;
+}
+
+.dark .text-red-600,
+.dark .text-red-700,
+.dark .text-red-800 {
+  color: oklch(0.7 0.2 15) !important;
+}
+
+.dark .text-blue-600,
+.dark .text-blue-700,
+.dark .text-blue-800 {
+  color: oklch(0.7 0.15 264) !important;
+}
+
+.dark .text-orange-600,
+.dark .text-orange-700,
+.dark .text-orange-800 {
+  color: oklch(0.75 0.18 45) !important;
+}
+
+.dark .text-purple-600,
+.dark .text-purple-700,
+.dark .text-purple-800 {
+  color: oklch(0.75 0.18 300) !important;
+}
+
+/* Improved RTL support for Hebrew with more specific and refined rules */
+[dir="rtl"] {
+  text-align: right;
+}
+
+/* RTL Navigation and Header */
+[dir="rtl"] .flex.items-center.justify-between {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .flex.items-center.gap-2,
+[dir="rtl"] .flex.items-center.gap-4 {
+  flex-direction: row-reverse;
+}
+
+/* RTL Form Elements */
+[dir="rtl"] .space-y-2 input,
+[dir="rtl"] .space-y-4 input,
+[dir="rtl"] input[type="email"],
+[dir="rtl"] input[type="password"],
+[dir="rtl"] input[type="text"],
+[dir="rtl"] input[type="date"] {
+  text-align: right;
+  padding-right: 12px;
+  padding-left: 12px;
+}
+
+[dir="rtl"] .space-y-2 label,
+[dir="rtl"] .space-y-4 label {
+  text-align: right;
+}
+
+/* RTL Button Groups */
+[dir="rtl"] .flex.gap-2 button,
+[dir="rtl"] .flex.gap-4 button {
+  order: -1;
+}
+
+[dir="rtl"] .flex.justify-end {
+  justify-content: flex-start;
+}
+
+[dir="rtl"] .flex.justify-start {
+  justify-content: flex-end;
+}
+
+/* RTL Margins and Padding */
+[dir="rtl"] .ml-auto {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+[dir="rtl"] .mr-auto {
+  margin-right: 0;
+  margin-left: auto;
+}
+
+[dir="rtl"] .ml-2 {
+  margin-left: 0;
+  margin-right: 0.5rem;
+}
+
+[dir="rtl"] .mr-2 {
+  margin-right: 0;
+  margin-left: 0.5rem;
+}
+
+[dir="rtl"] .pl-4 {
+  padding-left: 0;
+  padding-right: 1rem;
+}
+
+[dir="rtl"] .pr-4 {
+  padding-right: 0;
+  padding-left: 1rem;
+}
+
+/* RTL Card and Content Layout */
+[dir="rtl"] .grid.grid-cols-1,
+[dir="rtl"] .grid.grid-cols-2,
+[dir="rtl"] .grid.grid-cols-3 {
+  direction: rtl;
+}
+
+[dir="rtl"] .space-x-2 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 1;
+  margin-right: 0.5rem;
+  margin-left: 0;
+}
+
+[dir="rtl"] .space-x-4 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 1;
+  margin-right: 1rem;
+  margin-left: 0;
+}
+
+/* RTL Sidebar and Navigation */
+[dir="rtl"] .sidebar {
+  right: 0;
+  left: auto;
+}
+
+[dir="rtl"] .sidebar-content {
+  text-align: right;
+}
+
+/* RTL Dropdown and Select Elements */
+[dir="rtl"] select,
+[dir="rtl"] .select-trigger {
+  text-align: right;
+  padding-right: 12px;
+  padding-left: 32px;
+}
+
+[dir="rtl"] .dropdown-menu {
+  right: 0;
+  left: auto;
+}
+
+/* RTL Icons and Arrows */
+[dir="rtl"] .chevron-right {
+  transform: rotate(180deg);
+}
+
+[dir="rtl"] .chevron-left {
+  transform: rotate(180deg);
+}
+
+/* RTL Table and List Elements */
+[dir="rtl"] table {
+  direction: rtl;
+}
+
+[dir="rtl"] th,
+[dir="rtl"] td {
+  text-align: right;
+}
+
+[dir="rtl"] ul,
+[dir="rtl"] ol {
+  padding-right: 1.5rem;
+  padding-left: 0;
+}
+
+/* Dark mode calendar icon styling */
+.dark [data-lucide="calendar"] {
+  color: white !important;
+}
+
+.dark .lucide-calendar {
+  color: white !important;
+}
+
+/* Improved date input styling for dark mode */
+.dark input[type="date"] {
+  color-scheme: dark;
+  color: oklch(0.9 0 0) !important;
+}
+
+.dark input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+}
+
+/* Enhanced dark mode visual effects and depth */
+.dark .bg-gradient-to-br {
+  background: linear-gradient(135deg, oklch(0.15 0.02 264) 0%, oklch(0.12 0.03 280) 50%, oklch(0.18 0.02 250) 100%);
+}
+
+.dark .bg-gradient-to-r {
+  background: linear-gradient(90deg, oklch(0.65 0.15 264) 0%, oklch(0.7 0.18 280) 100%);
+}
+
+.dark .shadow-lg {
+  box-shadow: 0 10px 15px -3px rgba(139, 92, 246, 0.1), 0 4px 6px -2px rgba(139, 92, 246, 0.05);
+}
+
+.dark .shadow-xl {
+  box-shadow: 0 20px 25px -5px rgba(139, 92, 246, 0.15), 0 10px 10px -5px rgba(139, 92, 246, 0.1);
+}
+
+/* Enhanced hover effects for dark mode */
+.dark .hover\:shadow-xl:hover {
+  box-shadow: 0 25px 50px -12px rgba(139, 92, 246, 0.25);
+  transform: translateY(-2px);
+  transition: all 0.3s ease;
+}
+
+.dark .hover\:bg-accent:hover {
+  background: linear-gradient(135deg, oklch(0.7 0.18 264) 0%, oklch(0.75 0.2 280) 100%);
+}
+
+/* Improved card styling for dark mode */
+.dark .bg-card {
+  background: linear-gradient(135deg, oklch(0.12 0.015 264) 0%, oklch(0.14 0.02 250) 100%);
+  border: 1px solid oklch(0.22 0.02 264);
+}
+
+/* Enhanced button styling for dark mode */
+.dark .bg-primary {
+  background: linear-gradient(135deg, oklch(0.7 0.15 264) 0%, oklch(0.75 0.18 280) 100%);
+  box-shadow: 0 4px 14px 0 rgba(139, 92, 246, 0.4);
+}
+
+.dark .bg-primary:hover {
+  background: linear-gradient(135deg, oklch(0.75 0.18 264) 0%, oklch(0.8 0.2 280) 100%);
+  box-shadow: 0 6px 20px 0 rgba(139, 92, 246, 0.5);
+  transform: translateY(-1px);
+}
+
+/* Enhanced input styling for dark mode */
+.dark input,
+.dark select,
+.dark textarea {
+  background: oklch(0.14 0.02 264);
+  border: 1px solid oklch(0.22 0.02 264);
+  color: oklch(0.95 0 0) !important;
+}
+
+.dark input:focus,
+.dark select:focus,
+.dark textarea:focus {
+  border-color: oklch(0.7 0.15 264);
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.15);
+  background: oklch(0.16 0.02 264);
+}
+
+/* Enhanced text contrast for dark mode */
+.dark .text-muted-foreground {
+  color: oklch(0.8 0 0) !important;
+}
+
+.dark .text-gray-500 {
+  color: oklch(0.75 0 0) !important;
+}
+
+.dark .text-gray-400 {
+  color: oklch(0.7 0 0) !important;
+}
+
+/* Better gradient backgrounds for dark mode */
+.dark .bg-gradient-to-r.from-orange-50.to-yellow-50 {
+  background: linear-gradient(90deg, oklch(0.15 0.05 45) 0%, oklch(0.16 0.06 60) 100%);
+}
+
+.dark .bg-gradient-to-r.from-blue-50.to-indigo-50 {
+  background: linear-gradient(90deg, oklch(0.15 0.05 264) 0%, oklch(0.16 0.06 280) 100%);
+}
+
+/* Enhanced border colors for dark mode */
+.dark .border-orange-200 {
+  border-color: oklch(0.25 0.05 45);
+}
+
+.dark .border-blue-200 {
+  border-color: oklch(0.25 0.05 264);
+}
+
+.dark .border-orange-800 {
+  border-color: oklch(0.3 0.08 45);
+}
+
+.dark .border-blue-800 {
+  border-color: oklch(0.3 0.08 264);
+}
